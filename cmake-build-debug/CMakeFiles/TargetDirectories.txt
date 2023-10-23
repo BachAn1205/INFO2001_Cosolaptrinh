@@ -1,0 +1,3 @@
+C:/Users/khanh/OneDrive/Desktop/INFO2001_Cosolaptrinh/cmake-build-debug/CMakeFiles/INFO2001_Cosolaptrinh.dir
+C:/Users/khanh/OneDrive/Desktop/INFO2001_Cosolaptrinh/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/khanh/OneDrive/Desktop/INFO2001_Cosolaptrinh/cmake-build-debug/CMakeFiles/rebuild_cache.dir
