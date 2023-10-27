@@ -11,6 +11,7 @@ int main() {
         S = S+ i*i;
 
     printf("tong binh phuong tu 0 den %d la : %d",n, S);
+    return 0;
 
     }
 
