@@ -1,42 +1,13 @@
 #include <stdio.h>
 
 int main() {
-    long long a;
-    printf("nhap gia tri cua a:");
-    scanf("%lld", &a);
-    if ((-10^18<=a<=10^18)&&(a%5==0)&&(a%3==0)){
-        printf("1\n");
+    int a;
+    printf("Nhap a : ");
+    scanf("%d", &a );
+    if (a % 2 ==0) {
+        printf("%d la so chan ",a);
     } else {
-        printf("0\n");
+        printf("%d la so le.", a);
     }
+    return 0 ;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
