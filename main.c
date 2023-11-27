@@ -44,27 +44,6 @@ struct Student updateInformation(struct Student S) {
     scanf("%d/%d/ %d", &S.DOB.date, &S.DOB.month, &S.DOB.year);
     return S;
 }
-// sắp xếp sinh viên theo thứ tự ID
-void bubbleSortStudents(struct Student S[], int n) {
-    for (int i = 0; i < n - 1; ++i) {
-        for (int j = 0; j < n - i - 1; ++j) {
-            if (strcmp(S[j].id, S[j + 1].id) > 0) {
-                struct Student temp = S[j];
-                S[j]=S[j+1];
-
-
-            }
-        }
-    }
-}
-int searchStudent(struct Student S[],int n, const char* studentId) {
-    for (int i = 0; i < n ; ++i) {
-        if (strcmp(S[i].id, studentId) == 0) {
-            return i;
-        }
-        }
-    return -1;
-    }
 
 int main () {
     int choice;
@@ -79,7 +58,6 @@ int main () {
         printf("5. Sap xep thu tu sinh vien theo Id \n");
         printf("Nhap lua chon cua ban :");
         scanf("%d", &choice);
-
 
         switch (choice) {
             case 1:
@@ -114,10 +92,7 @@ int main () {
                     }
                 }
                 break;
-
-
         }
-
     } while (choice != 3);
     return 0;
 }
