@@ -1,35 +1,123 @@
 #include <stdio.h>
+#include <string.h>
+#define maxStudent 47
+struct Date {
+    int date;
+    int month;
+    int year;
+};
+struct Student {
+        char name[50];
+        char id[20];
+        struct Date DOB;
+    };
+// Nhâp thông tin sinh viên
+struct Student inputInformation() {
+    struct Student S;
+     printf(" Nhap ma sinh vien :");
+     scanf("%s", &S.id);
+     printf(" Nhap ten sinh vien:");
+     getchar();
+     fgets(S.name, 50, stdin);
+     S.name[strcspn(S.name, "\n")] = '\0';
+     printf("Nhap ngay thang nam sinh:");
+     scanf("%d/%d/ %d", &S.DOB.date, &S.DOB.month, &S.DOB.year);
+     return S;
 
- int main() {
-    int a,b,c,d;
-     printf("HE THONG CHAM CONG NHAN VIEN\n");
-    printf("Nhap gio vao ca:(som nhat 6h) \n");
-    scanf("%d",&a);
-    printf("Nhap gio ra ca: (muon nhat 18h) \n");
-    scanf("%d", &b);
+ }
+ // Hiển thị thông tinh sinh viên
 
-     while ((a < 6) || (b > 18)) {
-         printf("Gio lam viec khong hop le. Vui long nhap lai!\n");
-         printf("Nhap gio vao ca:(som nhat 6h) \n");
-         scanf("%d",&a);
-         printf("Nhap gio ra ca: (muon nhat 18h) \n");
-         scanf("%d", &b);
-
+void displayInformation(struct Student S) {
+    printf("Ma sinh vien: %s\n", S.id);
+    printf("Ho va ten: %s\n", S.name);
+    printf("Ngay thang nam sinh: %d/%d/%d\n", S.DOB.date, S.DOB.month, S.DOB.year);
 }
+// Cập nhật thông tin sinh viên
+struct Student updateInformation(struct Student S) {
+    printf(" Nhap ma sinh vien moi :");
+    scanf("%s", &S.id);
+    printf(" Nhap ten sinh vien moi:");
+    getchar();
+    fgets(S.name, 50, stdin);
+    S.name[strcspn(S.name, "\n")] = '\0';
+    printf("Nhap ngay thang nam sinh moi :");
+    scanf("%d/%d/ %d", &S.DOB.date, &S.DOB.month, &S.DOB.year);
+    return S;
+}
+// sắp xếp sinh viên theo thứ tự ID
+void bubbleSortStudents(struct Student S[], int n) {
+    for (int i = 0; i < n - 1; ++i) {
+        for (int j = 0; j < n - i - 1; ++j) {
+            if (strcmp(S[j].id, S[j + 1].id) > 0) {
+                struct Student temp = S[j];
+                S[j]=S[j+1];
 
-    if (a,b<=12){
-        printf("tien luonng theo ngay la : %d", (12-a) * 6000);
+
+            }
+        }
     }
-    else if ((a<=12)&&(b<=18)) {
-         c= (12-a) * 6000;
-         d= (b-12) * 7500;
-        printf("luong theo ngay la: %d ", c+d);
-    } else if (a,b>=12) {
-        printf("luong theo ngay la %d", (b-a)*7500);
+}
+int searchStudent(struct Student S[],int n, const char* studentId) {
+    for (int i = 0; i < n ; ++i) {
+        if (strcmp(S[i].id, studentId) == 0) {
+            return i;
+        }
+        }
+    return -1;
     }
 
+int main () {
+    int choice;
+    struct Student S[47];
+    int numstudents = 0;
+    char searchId[20];
+    do {
+        printf("1. Nhap thong tin sinh vien\n");
+        printf("2. Hien thi thong tin sinh vien\n");
+        printf("3. Cap nhat thong tin sinh vien\n");
+        printf("4. Tim kiem sinh vien\n");
+        printf("5. Sap xep thu tu sinh vien theo Id \n");
+        printf("Nhap lua chon cua ban :");
+        scanf("%d", &choice);
 
-     return 0;
-    }
+
+        switch (choice) {
+            case 1:
+                if (numstudents < 47) {
+                    printf("Nhap thong tin cua sinh vien %d\n", numstudents + 1);
+                    S[numstudents] = inputInformation();
+                    numstudents++;
+                } else {
+                    printf("So hoc sinh dat gioi han");
+                }
+                break;
+            case 2:
+                printf("Thong tin cac sinh vien :\n");
+                for (int i = 0; i < numstudents; ++i) {
+                    printf("Sinh vien thu %d\n", i + 1);
+                    displayInformation(S[i]);
+                    printf("\n");
+                }
+                break;
+            case 3:
+                if (numstudents > 0) {
+                    int updt;
+                    printf("Nhap so thu tu hoc sinh can cap nhat :");
+                    scanf("%d", &updt);
+                    if (updt > 0 && updt <= numstudents) {
+                        printf("Nhap thong tin moi cho hoc sinh thu ;%d\n", updt);
+                        updateInformation(S[updt - 1]);
+                        printf("Thong tin da duoc cap nhat\n");
+                    } else {
+                        printf("So thu tu ban nhap khong hop le! \n");
+                        printf("Khong co thong tin hoc sinh");
+                    }
+                }
+                break;
 
 
+        }
+
+    } while (choice != 3);
+    return 0;
+}
