@@ -54,9 +54,8 @@ int main () {
         printf("1. Nhap thong tin sinh vien\n");
         printf("2. Hien thi thong tin sinh vien\n");
         printf("3. Cap nhat thong tin sinh vien\n");
-        printf("4. Tim kiem sinh vien\n");
-        printf("5. Sap xep thu tu sinh vien theo Id \n");
         printf("Nhap lua chon cua ban :");
+    
         scanf("%d", &choice);
 
         switch (choice) {
@@ -93,6 +92,7 @@ int main () {
                 }
                 break;
         }
-    } while (choice != 3);
+    } 
+while (choice != 3);
     return 0;
 }
